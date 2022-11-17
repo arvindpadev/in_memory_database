@@ -98,6 +98,26 @@ At line 11, DELETE expects 2 arguments - a table name and a key"###;
     }
 
     #[test]
+    fn when_a_get_from_an_non_existent_table_is_attempted_then_an_empty_string_is_returned() {
+        let input = vec![
+            vec!["get", "notable", "nokey"]
+        ];
+        let real_input = crate::convert::convert_str_input_to_string_input(input);
+        let results = solution(real_input).unwrap();
+        assert_eq!(0, results[0].len());
+    }
+
+    #[test]
+    fn when_a_delete_from_an_non_existent_table_is_attempted_then_a_false_string_is_returned() {
+        let input = vec![
+            vec!["delete", "notable", "nokey"]
+        ];
+        let real_input = crate::convert::convert_str_input_to_string_input(input);
+        let results = solution(real_input).unwrap();
+        assert_eq!("false", results[0]);
+    }
+
+    #[test]
     fn when_an_empty_input_is_supplied_then_an_error_with_message_should_be_returned() {
         let error = solution(vec![]).unwrap_err();
         let expected = Error::new("No queries were supplied".to_string());
