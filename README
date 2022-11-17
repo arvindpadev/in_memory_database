@@ -1,0 +1,5 @@
+To install Rust and Cargo (Rust's build system) run the install_rust.sh script. Be sure to follow the instructions that show up before the script sleeps for 10 seconds.
+
+To run the code, run the run_code.sh
+
+To run the unit tests, run the run_tests.sh
